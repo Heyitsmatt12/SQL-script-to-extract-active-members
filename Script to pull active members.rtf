@@ -1,463 +1,151 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2761
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 Times-Roman;\f1\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue255;\red0\green0\blue0;\red109\green109\blue109;
-\red251\green0\blue255;\red251\green0\blue7;}
-{\*\expandedcolortbl;;\cssrgb\c0\c0\c100000;\cssrgb\c0\c0\c0;\cssrgb\c50196\c50196\c50196;
-\cssrgb\c100000\c0\c100000;\cssrgb\c100000\c0\c0;}
-\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\deftab720
-\pard\pardeftab720\partightenfactor0
+Select M.MemID,M.DOB,Ek.enrollid, Ek.carriermemid, EK.effdate, EK.segtype
 
-\f0\fs25\fsmilli12667 \cf2 \expnd0\expndtw0\kerning0
-Select\cf0  M\cf4 .\cf0 MemID\cf4 ,\cf0 M\cf4 .\cf0 DOB\cf4 ,\cf0 Ek\cf4 .\cf0 enrollid\cf4 ,\cf0  Ek\cf4 .\cf0 carriermemid\cf4 ,\cf0  EK\cf4 .\cf0 effdate\cf4 ,\cf0  EK\cf4 .\cf0 segtype
-\f1\fs32 \
+From[Server 1].[CA_Database].dbo.member M inner join [Server 1].[ CA_Database].dbo.Enrollkeys EK on M.memid=EK.memid
 
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
+Where effdate<= GetDate()
+And termdate>= Getdate()
+And segtype='INT'
+AND effdate<DOB
 
-\f0\fs25\fsmilli12667 \cf2 From\cf0 [Server 1]\cf4 .\cf0 [CA_Database]\cf4 .\cf0 dbo\cf4 .\cf2 member\cf0  M \cf4 inner\cf0  \cf4 join\cf0  [Server 1]\cf4 .\cf0 [ CA_Database]\cf4 .\cf0 dbo\cf4 .\cf0 Enrollkeys EK \cf2 on\cf0  M\cf4 .\cf0 memid\cf4 =\cf0 EK\cf4 .\cf0 memid
-\f1\fs32 \
+Union 
 
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
+Select M.MemID,M.DOB,Ek.enrollid, Ek.carriermemid, EK.effdate, EK.segtype
 
-\f0\fs25\fsmilli12667 \cf2 Where\cf0  effdate\cf4 <=\cf0  \cf5 GetDate\cf4 ()
-\f1\fs32 \cf0 \
+From[Server 3].[FL_Database].dbo.member M inner join [Server 3].[FL_Server].dbo.Enrollkeys EK on M.memid=EK.memid
 
-\f0\fs25\fsmilli12667 \cf4 And\cf0  termdate\cf4 >=\cf0  \cf5 Getdate\cf4 ()
-\f1\fs32 \cf0 \
 
-\f0\fs25\fsmilli12667 \cf4 And\cf0  segtype\cf4 =\cf6 'INT'
-\f1\fs32 \cf0 \
+Where effdate<= GetDate()
+And termdate>= Getdate()
+And segtype='INT'
+AND effdate<DOB
 
-\f0\fs25\fsmilli12667 \cf4 AND\cf0  effdate\cf4 <\cf0 DOB
-\f1\fs32 \
+Union 
 
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
+Select M.MemID,M.DOB,Ek.enrollid, Ek.carriermemid, EK.effdate, EK.segtype
 
-\f0\fs25\fsmilli12667 \cf2 Union
-\f1\fs32 \cf0 \
+From[Server 1].[UNV_Database].dbo.member M inner join [Server 1].[ UNV_Database].dbo.Enrollkeys EK on M.memid=EK.memid
 
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
+Where effdate<= GetDate()
+And termdate>= Getdate()
+And segtype='INT'
+AND effdate<DOB
 
-\f0\fs25\fsmilli12667 \cf2 Select\cf0  M\cf4 .\cf0 MemID\cf4 ,\cf0 M\cf4 .\cf0 DOB\cf4 ,\cf0 Ek\cf4 .\cf0 enrollid\cf4 ,\cf0  Ek\cf4 .\cf0 carriermemid\cf4 ,\cf0  EK\cf4 .\cf0 effdate\cf4 ,\cf0  EK\cf4 .\cf0 segtype
-\f1\fs32 \
+Union
 
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
+Select M.MemID,M.DOB,Ek.enrollid, Ek.carriermemid, EK.effdate, EK.segtype
 
-\f0\fs25\fsmilli12667 \cf2 From\cf0 [Server 3]\cf4 .\cf0 [FL_Database]\cf4 .\cf0 dbo\cf4 .\cf2 member\cf0  M \cf4 inner\cf0  \cf4 join\cf0  [Server 3]\cf4 .\cf0 [FL_Server]\cf4 .\cf0 dbo\cf4 .\cf0 Enrollkeys EK \cf2 on\cf0  M\cf4 .\cf0 memid\cf4 =\cf0 EK\cf4 .\cf0 memid
-\f1\fs32 \
+From[Server WV01].[IL_Database].dbo.member M inner join [Server WV01].[ IL_Database].dbo.Enrollkeys EK on M.memid=EK.memid
 
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
+Where effdate<= GetDate()
+And termdate>= Getdate()
+And segtype='INT'
+AND effdate<DOB
 
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
+Union
 
-\f0\fs25\fsmilli12667 \cf2 Where\cf0  effdate\cf4 <=\cf0  \cf5 GetDate\cf4 ()
-\f1\fs32 \cf0 \
+Select M.MemID,M.DOB,Ek.enrollid, Ek.carriermemid, EK.effdate, EK.segtype
 
-\f0\fs25\fsmilli12667 \cf4 And\cf0  termdate\cf4 >=\cf0  \cf5 Getdate\cf4 ()
-\f1\fs32 \cf0 \
+From[Server 2].[MAPD_Database].dbo.member M inner join [Server 2].[ MAPD_Database].dbo.Enrollkeys EK on M.memid=EK.memid
 
-\f0\fs25\fsmilli12667 \cf4 And\cf0  segtype\cf4 =\cf6 'INT'
-\f1\fs32 \cf0 \
+Where effdate<= GetDate()
+And termdate>= Getdate()
+And segtype='INT'
+AND effdate<DOB
 
-\f0\fs25\fsmilli12667 \cf4 AND\cf0  effdate\cf4 <\cf0 DOB
-\f1\fs32 \
+Union
 
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
+Select M.MemID,M.DOB,Ek.enrollid, Ek.carriermemid, EK.effdate, EK.segtype
 
-\f0\fs25\fsmilli12667 \cf2 Union
-\f1\fs32 \cf0 \
+From[Server 4].[ MI_Database].dbo.member M inner join [Server 4].[ MI_Database].dbo.Enrollkeys EK on M.memid=EK.memid
 
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
+Where effdate<= GetDate()
+And termdate>= Getdate()
+And segtype='INT'
+AND effdate<DOB
 
-\f0\fs25\fsmilli12667 \cf2 Select\cf0  M\cf4 .\cf0 MemID\cf4 ,\cf0 M\cf4 .\cf0 DOB\cf4 ,\cf0 Ek\cf4 .\cf0 enrollid\cf4 ,\cf0  Ek\cf4 .\cf0 carriermemid\cf4 ,\cf0  EK\cf4 .\cf0 effdate\cf4 ,\cf0  EK\cf4 .\cf0 segtype
-\f1\fs32 \
+Union
 
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
+Select M.MemID,M.DOB,Ek.enrollid, Ek.carriermemid, EK.effdate, EK.segtype
 
-\f0\fs25\fsmilli12667 \cf2 From\cf0 [Server 1]\cf4 .\cf0 [UNV_Database]\cf4 .\cf0 dbo\cf4 .\cf2 member\cf0  M \cf4 inner\cf0  \cf4 join\cf0  [Server 1]\cf4 .\cf0 [ UNV_Database]\cf4 .\cf0 dbo\cf4 .\cf0 Enrollkeys EK \cf2 on\cf0  M\cf4 .\cf0 memid\cf4 =\cf0 EK\cf4 .\cf0 memid
-\f1\fs32 \
+From[Server 2].[Database_NM].dbo.member M inner join [Server 2].[ Database_NM].dbo.Enrollkeys EK on M.memid=EK.memid
 
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
+Where effdate<= GetDate()
+And termdate>= Getdate()
+And segtype='INT'
+AND effdate<DOB
 
-\f0\fs25\fsmilli12667 \cf2 Where\cf0  effdate\cf4 <=\cf0  \cf5 GetDate\cf4 ()
-\f1\fs32 \cf0 \
+Union
 
-\f0\fs25\fsmilli12667 \cf4 And\cf0  termdate\cf4 >=\cf0  \cf5 Getdate\cf4 ()
-\f1\fs32 \cf0 \
+Select M.MemID,M.DOB,Ek.enrollid, Ek.carriermemid, EK.effdate, EK.segtype
 
-\f0\fs25\fsmilli12667 \cf4 And\cf0  segtype\cf4 =\cf6 'INT'
-\f1\fs32 \cf0 \
+From[Server 2].[Database_OH].dbo.member M inner join [Server 2].[ Database_OH].dbo.Enrollkeys EK on M.memid=EK.memid
 
-\f0\fs25\fsmilli12667 \cf4 AND\cf0  effdate\cf4 <\cf0 DOB
-\f1\fs32 \
+Where effdate<= GetDate()
+And termdate>= Getdate()
+And segtype='INT'
+AND effdate<DOB
 
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
+Union
 
-\f0\fs25\fsmilli12667 \cf2 Union
-\f1\fs32 \cf0 \
+Select M.MemID,M.DOB,Ek.enrollid, Ek.carriermemid, EK.effdate, EK.segtype
 
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
+From[Server 1].[Database_PR].dbo.member M inner join [Server 1].[Database_PR].dbo.Enrollkeys EK on M.memid=EK.memid
 
-\f0\fs25\fsmilli12667 \cf2 Select\cf0  M\cf4 .\cf0 MemID\cf4 ,\cf0 M\cf4 .\cf0 DOB\cf4 ,\cf0 Ek\cf4 .\cf0 enrollid\cf4 ,\cf0  Ek\cf4 .\cf0 carriermemid\cf4 ,\cf0  EK\cf4 .\cf0 effdate\cf4 ,\cf0  EK\cf4 .\cf0 segtype
-\f1\fs32 \
+Where effdate<= GetDate()
+And termdate>= Getdate()
+And segtype='INT'
+AND effdate<DOB
 
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
+Union
+Select M.MemID,M.DOB,Ek.enrollid, Ek.carriermemid, EK.effdate, EK.segtype
 
-\f0\fs25\fsmilli12667 \cf2 From\cf0 [Server WV01]\cf4 .\cf0 [IL_Database]\cf4 .\cf0 dbo\cf4 .\cf2 member\cf0  M \cf4 inner\cf0  \cf4 join\cf0  [Server WV01]\cf4 .\cf0 [ IL_Database]\cf4 .\cf0 dbo\cf4 .\cf0 Enrollkeys EK \cf2 on\cf0  M\cf4 .\cf0 memid\cf4 =\cf0 EK\cf4 .\cf0 memid
-\f1\fs32 \
+From[Server 3].[Database_SC].dbo.member M inner join [Server_3].[Database_SC].dbo.Enrollkeys EK on M.memid=EK.memid
 
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
+Where effdate<= GetDate()
+And termdate>= Getdate()
+And segtype='INT'
+AND effdate<DOB
 
-\f0\fs25\fsmilli12667 \cf2 Where\cf0  effdate\cf4 <=\cf0  \cf5 GetDate\cf4 ()
-\f1\fs32 \cf0 \
+Union
+Select M.MemID,M.DOB,Ek.enrollid, Ek.carriermemid, EK.effdate, EK.segtype
 
-\f0\fs25\fsmilli12667 \cf4 And\cf0  termdate\cf4 >=\cf0  \cf5 Getdate\cf4 ()
-\f1\fs32 \cf0 \
+From[Server 4].[Database_TX].dbo.member M inner join [Server 4].[ Database_TX].dbo.Enrollkeys EK on M.memid=EK.memid
 
-\f0\fs25\fsmilli12667 \cf4 And\cf0  segtype\cf4 =\cf6 'INT'
-\f1\fs32 \cf0 \
+Where effdate<= GetDate()
+And termdate>= Getdate()
+And segtype='INT'
+AND effdate<DOB
 
-\f0\fs25\fsmilli12667 \cf4 AND\cf0  effdate\cf4 <\cf0 DOB
-\f1\fs32 \
+Union
 
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
+Select M.MemID,M.DOB,Ek.enrollid, Ek.carriermemid, EK.effdate, EK.segtype
 
-\f0\fs25\fsmilli12667 \cf2 Union
-\f1\fs32 \cf0 \
+From[Server 2].[Database_UT].dbo.member M inner join [Server 2].[ Database_UT].dbo.Enrollkeys EK on M.memid=EK.memid
 
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
+Where effdate<= GetDate()
+And termdate>= Getdate()
+And segtype='INT'
+AND effdate<DOB
 
-\f0\fs25\fsmilli12667 \cf2 Select\cf0  M\cf4 .\cf0 MemID\cf4 ,\cf0 M\cf4 .\cf0 DOB\cf4 ,\cf0 Ek\cf4 .\cf0 enrollid\cf4 ,\cf0  Ek\cf4 .\cf0 carriermemid\cf4 ,\cf0  EK\cf4 .\cf0 effdate\cf4 ,\cf0  EK\cf4 .\cf0 segtype
-\f1\fs32 \
+Union
 
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
+Select M.MemID,M.DOB,Ek.enrollid, Ek.carriermemid, EK.effdate, EK.segtype
 
-\f0\fs25\fsmilli12667 \cf2 From\cf0 [Server 2]\cf4 .\cf0 [MAPD_Database]\cf4 .\cf0 dbo\cf4 .\cf2 member\cf0  M \cf4 inner\cf0  \cf4 join\cf0  [Server 2]\cf4 .\cf0 [ MAPD_Database]\cf4 .\cf0 dbo\cf4 .\cf0 Enrollkeys EK \cf2 on\cf0  M\cf4 .\cf0 memid\cf4 =\cf0 EK\cf4 .\cf0 memid
-\f1\fs32 \
+From[Server 3].[Database_WA].dbo.member M inner join [Server 3].[Database_WA].dbo.Enrollkeys EK on M.memid=EK.memid
 
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
+Where effdate<= GetDate()
+And termdate>= Getdate()
+And segtype='INT'
+AND effdate<DOB
 
-\f0\fs25\fsmilli12667 \cf2 Where\cf0  effdate\cf4 <=\cf0  \cf5 GetDate\cf4 ()
-\f1\fs32 \cf0 \
+Union
 
-\f0\fs25\fsmilli12667 \cf4 And\cf0  termdate\cf4 >=\cf0  \cf5 Getdate\cf4 ()
-\f1\fs32 \cf0 \
+Select M.MemID,M.DOB,Ek.enrollid, Ek.carriermemid, EK.effdate, EK.segtype
 
-\f0\fs25\fsmilli12667 \cf4 And\cf0  segtype\cf4 =\cf6 'INT'
-\f1\fs32 \cf0 \
+From[Server W].[Database_WI].dbo.member M inner join[Server W].[ Database_WI].dbo.Enrollkeys EK on M.memid=EK.memid
 
-\f0\fs25\fsmilli12667 \cf4 AND\cf0  effdate\cf4 <\cf0 DOB
-\f1\fs32 \
+Where effdate<= GetDate()
+And termdate>= Getdate()
+And segtype='INT'
+AND effdate<DOB
 
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \cf2 Union
-\f1\fs32 \cf0 \
-
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \cf2 Select\cf0  M\cf4 .\cf0 MemID\cf4 ,\cf0 M\cf4 .\cf0 DOB\cf4 ,\cf0 Ek\cf4 .\cf0 enrollid\cf4 ,\cf0  Ek\cf4 .\cf0 carriermemid\cf4 ,\cf0  EK\cf4 .\cf0 effdate\cf4 ,\cf0  EK\cf4 .\cf0 segtype
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \cf2 From\cf0 [Server 4]\cf4 .\cf0 [ MI_Database]\cf4 .\cf0 dbo\cf4 .\cf2 member\cf0  M \cf4 inner\cf0  \cf4 join\cf0  [Server 4]\cf4 .\cf0 [ MI_Database]\cf4 .\cf0 dbo\cf4 .\cf0 Enrollkeys EK \cf2 on\cf0  M\cf4 .\cf0 memid\cf4 =\cf0 EK\cf4 .\cf0 memid
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \cf2 Where\cf0  effdate\cf4 <=\cf0  \cf5 GetDate\cf4 ()
-\f1\fs32 \cf0 \
-
-\f0\fs25\fsmilli12667 \cf4 And\cf0  termdate\cf4 >=\cf0  \cf5 Getdate\cf4 ()
-\f1\fs32 \cf0 \
-
-\f0\fs25\fsmilli12667 \cf4 And\cf0  segtype\cf4 =\cf6 'INT'
-\f1\fs32 \cf0 \
-
-\f0\fs25\fsmilli12667 \cf4 AND\cf0  effdate\cf4 <\cf0 DOB
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \cf2 Union
-\f1\fs32 \cf0 \
-
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \cf2 Select\cf0  M\cf4 .\cf0 MemID\cf4 ,\cf0 M\cf4 .\cf0 DOB\cf4 ,\cf0 Ek\cf4 .\cf0 enrollid\cf4 ,\cf0  Ek\cf4 .\cf0 carriermemid\cf4 ,\cf0  EK\cf4 .\cf0 effdate\cf4 ,\cf0  EK\cf4 .\cf0 segtype
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \cf2 From\cf0 [Server 2]\cf4 .\cf0 [Database_NM]\cf4 .\cf0 dbo\cf4 .\cf2 member\cf0  M \cf4 inner\cf0  \cf4 join\cf0  [Server 2]\cf4 .\cf0 [ Database_NM]\cf4 .\cf0 dbo\cf4 .\cf0 Enrollkeys EK \cf2 on\cf0  M\cf4 .\cf0 memid\cf4 =\cf0 EK\cf4 .\cf0 memid
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \cf2 Where\cf0  effdate\cf4 <=\cf0  \cf5 GetDate\cf4 ()
-\f1\fs32 \cf0 \
-
-\f0\fs25\fsmilli12667 \cf4 And\cf0  termdate\cf4 >=\cf0  \cf5 Getdate\cf4 ()
-\f1\fs32 \cf0 \
-
-\f0\fs25\fsmilli12667 \cf4 And\cf0  segtype\cf4 =\cf6 'INT'
-\f1\fs32 \cf0 \
-
-\f0\fs25\fsmilli12667 \cf4 AND\cf0  effdate\cf4 <\cf0 DOB
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \cf2 Union
-\f1\fs32 \cf0 \
-
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \cf2 Select\cf0  M\cf4 .\cf0 MemID\cf4 ,\cf0 M\cf4 .\cf0 DOB\cf4 ,\cf0 Ek\cf4 .\cf0 enrollid\cf4 ,\cf0  Ek\cf4 .\cf0 carriermemid\cf4 ,\cf0  EK\cf4 .\cf0 effdate\cf4 ,\cf0  EK\cf4 .\cf0 segtype
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \cf2 From\cf0 [Server 2]\cf4 .\cf0 [Database_OH]\cf4 .\cf0 dbo\cf4 .\cf2 member\cf0  M \cf4 inner\cf0  \cf4 join\cf0  [Server 2]\cf4 .\cf0 [ Database_OH]\cf4 .\cf0 dbo\cf4 .\cf0 Enrollkeys EK \cf2 on\cf0  M\cf4 .\cf0 memid\cf4 =\cf0 EK\cf4 .\cf0 memid
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \cf2 Where\cf0  effdate\cf4 <=\cf0  \cf5 GetDate\cf4 ()
-\f1\fs32 \cf0 \
-
-\f0\fs25\fsmilli12667 \cf4 And\cf0  termdate\cf4 >=\cf0  \cf5 Getdate\cf4 ()
-\f1\fs32 \cf0 \
-
-\f0\fs25\fsmilli12667 \cf4 And\cf0  segtype\cf4 =\cf6 'INT'
-\f1\fs32 \cf0 \
-
-\f0\fs25\fsmilli12667 \cf4 AND\cf0  effdate\cf4 <\cf0 DOB
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \cf2 Union
-\f1\fs32 \cf0 \
-
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \cf2 Select\cf0  M\cf4 .\cf0 MemID\cf4 ,\cf0 M\cf4 .\cf0 DOB\cf4 ,\cf0 Ek\cf4 .\cf0 enrollid\cf4 ,\cf0  Ek\cf4 .\cf0 carriermemid\cf4 ,\cf0  EK\cf4 .\cf0 effdate\cf4 ,\cf0  EK\cf4 .\cf0 segtype
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \cf2 From\cf0 [Server 1]\cf4 .\cf0 [Database_PR]\cf4 .\cf0 dbo\cf4 .\cf2 member\cf0  M \cf4 inner\cf0  \cf4 join\cf0  [Server 1]\cf4 .\cf0 [Database_PR]\cf4 .\cf0 dbo\cf4 .\cf0 Enrollkeys EK \cf2 on\cf0  M\cf4 .\cf0 memid\cf4 =\cf0 EK\cf4 .\cf0 memid
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \cf2 Where\cf0  effdate\cf4 <=\cf0  \cf5 GetDate\cf4 ()
-\f1\fs32 \cf0 \
-
-\f0\fs25\fsmilli12667 \cf4 And\cf0  termdate\cf4 >=\cf0  \cf5 Getdate\cf4 ()
-\f1\fs32 \cf0 \
-
-\f0\fs25\fsmilli12667 \cf4 And\cf0  segtype\cf4 =\cf6 'INT'
-\f1\fs32 \cf0 \
-
-\f0\fs25\fsmilli12667 \cf4 AND\cf0  effdate\cf4 <\cf0 DOB
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \cf2 Union
-\f1\fs32 \cf0 \
-
-\f0\fs25\fsmilli12667 \cf2 Select\cf0  M\cf4 .\cf0 MemID\cf4 ,\cf0 M\cf4 .\cf0 DOB\cf4 ,\cf0 Ek\cf4 .\cf0 enrollid\cf4 ,\cf0  Ek\cf4 .\cf0 carriermemid\cf4 ,\cf0  EK\cf4 .\cf0 effdate\cf4 ,\cf0  EK\cf4 .\cf0 segtype
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \cf2 From\cf0 [Server 3]\cf4 .\cf0 [Database_SC]\cf4 .\cf0 dbo\cf4 .\cf2 member\cf0  M \cf4 inner\cf0  \cf4 join\cf0  [Server_3]\cf4 .\cf0 [Database_SC]\cf4 .\cf0 dbo\cf4 .\cf0 Enrollkeys EK \cf2 on\cf0  M\cf4 .\cf0 memid\cf4 =\cf0 EK\cf4 .\cf0 memid
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \cf2 Where\cf0  effdate\cf4 <=\cf0  \cf5 GetDate\cf4 ()
-\f1\fs32 \cf0 \
-
-\f0\fs25\fsmilli12667 \cf4 And\cf0  termdate\cf4 >=\cf0  \cf5 Getdate\cf4 ()
-\f1\fs32 \cf0 \
-
-\f0\fs25\fsmilli12667 \cf4 And\cf0  segtype\cf4 =\cf6 'INT'
-\f1\fs32 \cf0 \
-
-\f0\fs25\fsmilli12667 \cf4 AND\cf0  effdate\cf4 <\cf0 DOB
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \cf2 Union
-\f1\fs32 \cf0 \
-
-\f0\fs25\fsmilli12667 \cf2 Select\cf0  M\cf4 .\cf0 MemID\cf4 ,\cf0 M\cf4 .\cf0 DOB\cf4 ,\cf0 Ek\cf4 .\cf0 enrollid\cf4 ,\cf0  Ek\cf4 .\cf0 carriermemid\cf4 ,\cf0  EK\cf4 .\cf0 effdate\cf4 ,\cf0  EK\cf4 .\cf0 segtype
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \cf2 From\cf0 [Server 4]\cf4 .\cf0 [Database_TX]\cf4 .\cf0 dbo\cf4 .\cf2 member\cf0  M \cf4 inner\cf0  \cf4 join\cf0  [Server 4]\cf4 .\cf0 [ Database_TX]\cf4 .\cf0 dbo\cf4 .\cf0 Enrollkeys EK \cf2 on\cf0  M\cf4 .\cf0 memid\cf4 =\cf0 EK\cf4 .\cf0 memid
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \cf2 Where\cf0  effdate\cf4 <=\cf0  \cf5 GetDate\cf4 ()
-\f1\fs32 \cf0 \
-
-\f0\fs25\fsmilli12667 \cf4 And\cf0  termdate\cf4 >=\cf0  \cf5 Getdate\cf4 ()
-\f1\fs32 \cf0 \
-
-\f0\fs25\fsmilli12667 \cf4 And\cf0  segtype\cf4 =\cf6 'INT'
-\f1\fs32 \cf0 \
-
-\f0\fs25\fsmilli12667 \cf4 AND\cf0  effdate\cf4 <\cf0 DOB
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \cf2 Union
-\f1\fs32 \cf0 \
-
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \cf2 Select\cf0  M\cf4 .\cf0 MemID\cf4 ,\cf0 M\cf4 .\cf0 DOB\cf4 ,\cf0 Ek\cf4 .\cf0 enrollid\cf4 ,\cf0  Ek\cf4 .\cf0 carriermemid\cf4 ,\cf0  EK\cf4 .\cf0 effdate\cf4 ,\cf0  EK\cf4 .\cf0 segtype
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \cf2 From\cf0 [Server 2]\cf4 .\cf0 [Database_UT]\cf4 .\cf0 dbo\cf4 .\cf2 member\cf0  M \cf4 inner\cf0  \cf4 join\cf0  [Server 2]\cf4 .\cf0 [ Database_UT]\cf4 .\cf0 dbo\cf4 .\cf0 Enrollkeys EK \cf2 on\cf0  M\cf4 .\cf0 memid\cf4 =\cf0 EK\cf4 .\cf0 memid
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \cf2 Where\cf0  effdate\cf4 <=\cf0  \cf5 GetDate\cf4 ()
-\f1\fs32 \cf0 \
-
-\f0\fs25\fsmilli12667 \cf4 And\cf0  termdate\cf4 >=\cf0  \cf5 Getdate\cf4 ()
-\f1\fs32 \cf0 \
-
-\f0\fs25\fsmilli12667 \cf4 And\cf0  segtype\cf4 =\cf6 'INT'
-\f1\fs32 \cf0 \
-
-\f0\fs25\fsmilli12667 \cf4 AND\cf0  effdate\cf4 <\cf0 DOB
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \cf2 Union
-\f1\fs32 \cf0 \
-
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \cf2 Select\cf0  M\cf4 .\cf0 MemID\cf4 ,\cf0 M\cf4 .\cf0 DOB\cf4 ,\cf0 Ek\cf4 .\cf0 enrollid\cf4 ,\cf0  Ek\cf4 .\cf0 carriermemid\cf4 ,\cf0  EK\cf4 .\cf0 effdate\cf4 ,\cf0  EK\cf4 .\cf0 segtype
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \cf2 From\cf0 [Server 3]\cf4 .\cf0 [Database_WA]\cf4 .\cf0 dbo\cf4 .\cf2 member\cf0  M \cf4 inner\cf0  \cf4 join\cf0  [Server 3]\cf4 .\cf0 [Database_WA]\cf4 .\cf0 dbo\cf4 .\cf0 Enrollkeys EK \cf2 on\cf0  M\cf4 .\cf0 memid\cf4 =\cf0 EK\cf4 .\cf0 memid
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \cf2 Where\cf0  effdate\cf4 <=\cf0  \cf5 GetDate\cf4 ()
-\f1\fs32 \cf0 \
-
-\f0\fs25\fsmilli12667 \cf4 And\cf0  termdate\cf4 >=\cf0  \cf5 Getdate\cf4 ()
-\f1\fs32 \cf0 \
-
-\f0\fs25\fsmilli12667 \cf4 And\cf0  segtype\cf4 =\cf6 'INT'
-\f1\fs32 \cf0 \
-
-\f0\fs25\fsmilli12667 \cf4 AND\cf0  effdate\cf4 <\cf0 DOB
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \cf2 Union
-\f1\fs32 \cf0 \
-
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \cf2 Select\cf0  M\cf4 .\cf0 MemID\cf4 ,\cf0 M\cf4 .\cf0 DOB\cf4 ,\cf0 Ek\cf4 .\cf0 enrollid\cf4 ,\cf0  Ek\cf4 .\cf0 carriermemid\cf4 ,\cf0  EK\cf4 .\cf0 effdate\cf4 ,\cf0  EK\cf4 .\cf0 segtype
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \cf2 From\cf0 [Server W]\cf4 .\cf0 [Database_WI]\cf4 .\cf0 dbo\cf4 .\cf2 member\cf0  M \cf4 inner\cf0  \cf4 join\cf0 [Server W]\cf4 .\cf0 [ Database_WI]\cf4 .\cf0 dbo\cf4 .\cf0 Enrollkeys EK \cf2 on\cf0  M\cf4 .\cf0 memid\cf4 =\cf0 EK\cf4 .\cf0 memid
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \'a0
-\f1\fs32 \
-
-\f0\fs25\fsmilli12667 \cf2 Where\cf0  effdate\cf4 <=\cf0  \cf5 GetDate\cf4 ()
-\f1\fs32 \cf0 \
-
-\f0\fs25\fsmilli12667 \cf4 And\cf0  termdate\cf4 >=\cf0  \cf5 Getdate\cf4 ()
-\f1\fs32 \cf0 \
-
-\f0\fs25\fsmilli12667 \cf4 And\cf0  segtype\cf4 =\cf6 'INT'
-\f1\fs32 \cf0 \
-
-\f0\fs25\fsmilli12667 \cf4 AND\cf0  effdate\cf4 <\cf0 DOB
-\f1\fs32 \
-\pard\pardeftab720\sa213\partightenfactor0
-\cf0 \'a0\
-}
